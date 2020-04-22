@@ -15,10 +15,10 @@ class lawsModel{
     }
   }   
 
-  static async getLawsByTypeId(typesoflaws) {
+  static async getLawsByTypeId() {
       try {
         const response = await db.any(
-          `SELECT * FROM laws WHERE type_of_laws_id = ${typesoflaws.id};`
+          `SELECT * FROM laws WHERE type_of_laws_id = typesoflaws.id;`
         );
         return response;
       } catch (error) {
@@ -26,6 +26,16 @@ class lawsModel{
         return error;
     }
   }
+
+  static async getLawTypes() {
+    try {
+      const response = await db.any(`SELECT * FROM typesoflaws`);
+      return response;
+    } catch (error) {
+      console.error('ERROR: ', error);
+      return error;
+  }
+}
 }
 
 module.exports = lawsModel;

@@ -5,7 +5,7 @@ const logger = require('morgan');
 const cors = require('cors');
 
 const indexRouter = require('./routes/index');
-// const usersRouter = require('./routes/users');
+const lawsRouter = require('./routes/laws');
 const corsOptions = {
   origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
+app.use('/laws', lawsRouter);
 // app.use('/users', usersRouter);
 
 module.exports = app;
