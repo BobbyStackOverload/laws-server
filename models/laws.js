@@ -1,15 +1,13 @@
 const db = require('./conn')
 class lawsModel{
-    constructor(id, author, blog_posts, title) {
+    constructor(id, states) {
       this.id = id;
-      this.author = author;
-      this.blog_posts = blog_posts;
-      this.title = title;
+      this.states = states;
     }
 
   static async getAllLaws() {
     try {
-      const response = await db.any(`SELECT * FROM laws;`);
+      const response = await db.any(`SELECT * from states`);
       return response;
     } catch (error) {
       console.error("ERROR: ", error);
@@ -20,7 +18,7 @@ class lawsModel{
   static async getLawsByTypeId(law_id) {
       try {
         const response = await db.any(
-          `SELECT * FROM comments WHERE id = ${law_id};`
+          `SELECT * FROM laws WHERE id = ${law_id};`
         );
         return response;
       } catch (error) {
