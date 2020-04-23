@@ -7,7 +7,7 @@ class lawsModel{
 
   static async getAllLaws() {
     try {
-      const response = await db.any(`SELECT * FROM laws`);
+      const response = await db.any(`SELECT * FROM laws ORDER BY id`);
       return response;
     } catch (error) {
       console.error("ERROR: ", error);
@@ -15,10 +15,10 @@ class lawsModel{
     }
   }   
 
-  static async getLawsByTypeId() {
+  static async getLawsByTypeId(id) {
       try {
         const response = await db.any(
-          `SELECT * FROM laws WHERE type_of_laws_id = typesoflaws.id;`
+          `SELECT * FROM laws WHERE type_of_laws_id = ${id};`
         );
         return response;
       } catch (error) {
