@@ -7,7 +7,7 @@ class lawsModel{
 
   static async getAllLaws() {
     try {
-      const response = await db.any(`SELECT * FROM laws ORDER BY id`);
+      const response = await db.any(`SELECT * FROM states ORDER BY id`);
       return response;
     } catch (error) {
       console.error("ERROR: ", error);
@@ -15,21 +15,23 @@ class lawsModel{
     }
   }   
 
-  static async getLawsByTypeId(id) {
-      try {
-        const response = await db.any(
-          `SELECT * FROM laws WHERE type_of_laws_id = ${id};`
-        );
-        return response;
-      } catch (error) {
-        console.error("ERROR: ", error);
-        return error;
-    }
-  }
+  // static async getLawsByTypeId(id) {
+  //     try {
+  //       const response = await db.any(
+  //         `SELECT * FROM laws WHERE type_of_laws_id = ${id};`
+  //       );
+  //       return response;
+  //     } catch (error) {
+  //       console.error("ERROR: ", error);
+  //       return error;
+  //   }
+  // }
 
   static async getLawTypes() {
     try {
-      const response = await db.any(`SELECT * FROM typesoflaws`);
+      const response = await db.any(
+        `SELECT lawsinfo FROM laws INNER JOIN states ON states.id = laws.states_id = ${id};`
+        );
       return response;
     } catch (error) {
       console.error('ERROR: ', error);
