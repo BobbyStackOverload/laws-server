@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
-app.use('/laws', lawsRouter);
-// app.use('/users', usersRouter);
+app.use('/states', lawsRouter);
+
 
 module.exports = app;
