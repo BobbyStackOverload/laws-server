@@ -30,5 +30,5 @@ app.use(cors(corsOptions));
 app.use('/', indexRouter);
 app.use('/states', lawsRouter);
 
-
 module.exports = app;
+
