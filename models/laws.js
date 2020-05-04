@@ -18,7 +18,7 @@ class lawsModel{
   static async getLawTypes(statesId) {
     try {
       const response = await db.any(
-        `SELECT lawsinfo FROM laws WHERE states_id = ${statesId};`
+        `SELECT lawsinfo FROM laws WHERE states_id = ${statesId} ORDER BY type_of_laws_id;`
         );
       return response;
     } catch (error) {
